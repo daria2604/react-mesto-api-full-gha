@@ -1,0 +1,16 @@
+.content {
+  margin: 40px 0 66px 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  min-height: 60vh;
+}
+
+@media (max-width: 425px) {
+  .content {
+    margin-top: 39px;
+    margin-bottom: 48px;
+    row-gap: 36px;
+    min-height: 30vh;
+  }
+}

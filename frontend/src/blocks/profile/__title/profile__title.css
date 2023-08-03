@@ -1,0 +1,12 @@
+.profile__title {
+  display: flex;
+  column-gap: 19px;
+  margin-bottom: 7px;
+}
+
+@media (max-width: 585px) {
+  .profile__title {
+    column-gap: 10px;
+    margin-left: 30px;
+  }
+}

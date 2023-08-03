@@ -1,0 +1,11 @@
+@media (max-width: 880px) {
+  .footer {
+    padding: 0 72px;
+  }
+}
+
+@media (max-width: 585px) {
+  .footer {
+    padding: 0 19px;
+  }
+}

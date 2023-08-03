@@ -1,0 +1,12 @@
+.auth__heading {
+  color: #FFF;
+  margin: 0 0 50px 0;
+  font-size: 24px;
+}
+
+@media (max-width: 420px) {
+  .auth__heading {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+}

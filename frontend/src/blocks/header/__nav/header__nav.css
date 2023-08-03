@@ -1,0 +1,11 @@
+.header__nav {
+  display: none;
+  column-gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 535px) {
+  .header__nav {
+    display: flex;
+  }
+}

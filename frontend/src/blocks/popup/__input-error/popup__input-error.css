@@ -1,0 +1,23 @@
+.popup__input-error {
+  color: red;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  padding-top: 5px;
+  display: block;
+}
+
+.popup__input-error:first-of-type {
+  height: 30px;
+}
+
+.popup__input-error:last-of-type {
+  height: 48px;
+}
+
+
+@media (max-width: 585px) {
+  .popup__input-error:last-of-type {
+    height: 45px;
+  }
+}

@@ -1,0 +1,13 @@
+.button_action_add {
+  background: url(../../../images/add-icon.svg) no-repeat center;
+  border: 2px solid #FFF;
+  padding: 23px 73px;
+}
+
+@media (max-width: 768px) {
+  .button_action_add {
+    padding-left: 139px;
+    padding-right: 139px;
+    background-size: 16px;
+  }
+}

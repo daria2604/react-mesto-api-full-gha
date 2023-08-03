@@ -1,0 +1,38 @@
+.mobile-menu__button {
+  display: none;
+  width: 24px;
+  height: 3px;
+  border: none;
+  padding: 0;
+}
+
+.mobile-menu__button:hover {
+  opacity: .6;
+  transition: all .4s ease .2s;
+}
+
+@media (max-width: 534px) {
+  .mobile-menu__button {
+    display: block;
+    background-color: #FFF;
+  }
+
+  .mobile-menu__button::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #FFF;
+    margin-top: 9px;
+  }
+
+  .mobile-menu__button::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    position: relative;
+    margin-top: 6px;
+  }
+}

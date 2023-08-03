@@ -1,0 +1,15 @@
+.popup__info {
+  background-color: #FFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 36px;
+}
+
+@media (max-width: 585px) {
+  .popup__info {
+    padding: 50px 18px;
+  }
+}

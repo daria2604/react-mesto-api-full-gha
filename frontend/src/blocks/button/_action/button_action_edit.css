@@ -1,0 +1,13 @@
+.button_action_edit {
+  background: url(../../../images/edit-icon.svg) no-repeat center;
+  padding: 11px;
+  border: 1px solid #FFF;
+  align-self: center;
+}
+
+@media (max-width: 585px) {
+  .button_action_edit {
+    padding: 8px;
+    background-size: 7.5px;
+  }
+}

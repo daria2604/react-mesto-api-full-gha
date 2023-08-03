@@ -1,0 +1,5 @@
+@media (min-width: 535px) {
+  .header__nav_display {
+    display: flex;
+  }
+}
