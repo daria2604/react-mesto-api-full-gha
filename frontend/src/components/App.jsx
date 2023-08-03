@@ -167,7 +167,7 @@ function App() {
 
   function handleAddPlaceSubmit(newCard) {
     function makeRequest() {
-      return api.addCard(newCard).then((card) => setCards([card, ...cards]));
+      return api.addCard(newCard).then((card) => setCards([...cards, card]));
     }
     handleSubmit(makeRequest);
   }

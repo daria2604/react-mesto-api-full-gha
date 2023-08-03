@@ -44,7 +44,7 @@ function Main(props) {
                 onCardDelete={props.onCardDelete}
                 onConfirmationPopup={props.onConfirmationPopup}
               />
-              ))
+              )).reverse()
             }
         </div>
       </section>
