@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const users = require('./routes/users');
 const cards = require('./routes/cards');
 const auth = require('./middlewares/auth');
@@ -22,6 +23,7 @@ app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true,
 }))
+app.use(requestLogger)
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -47,6 +49,7 @@ app.use('/logout', logout)
 
 mongoose.connect(DB_URL);
 
+app.use(errorLogger)
 app.use(errors())
 app.use(error)
 app.listen(PORT);
