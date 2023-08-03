@@ -9,7 +9,7 @@ const { errors } = require('celebrate');
 const users = require('./routes/users');
 const cards = require('./routes/cards');
 const auth = require('./middlewares/auth');
-const { login, createUser } = require('./controllers/users')
+const { login, createUser, logout } = require('./controllers/users')
 const { NotFoundError } = require('./errors/errorClasses')
 const { pageNotFoundErrorMessage, limitErrorMessage } = require('./errors/messages');
 const error = require('./middlewares/error');
@@ -43,6 +43,7 @@ app.use('/cards', cards);
 app.patch('*', (req, res) => {
   throw new NotFoundError(pageNotFoundErrorMessage);
 });
+app.use('/logout', logout)
 
 mongoose.connect(DB_URL);
 

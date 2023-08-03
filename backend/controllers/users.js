@@ -149,6 +149,15 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
+const logout = (req, res, next) => {
+  res.clearCookie('jwt');
+  if (res.status(OK)) {
+    res.send({ message: 'Вы вышли из аккаунта.' });
+  } else {
+    next();
+  }
+};
+
 module.exports = {
   getUsers,
   getUser,
@@ -157,4 +166,5 @@ module.exports = {
   updateProfile,
   updateAvatar,
   login,
+  logout,
 };

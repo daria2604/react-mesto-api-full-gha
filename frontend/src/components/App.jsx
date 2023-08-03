@@ -36,7 +36,8 @@ function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    api
+    if(isLoggedIn) {
+      api
       .getUserInfo()
       .then((data) => {
         setCurrentUser(data.user);
@@ -44,10 +45,12 @@ function App() {
       .catch((err) => {
         console.log(err.response.data);
       });
-  }, []);
+    }
+  }, [isLoggedIn]);
 
   React.useEffect(() => {
-    api
+    if(isLoggedIn) {
+      api
       .getInitialCards()
       .then((data) => {
         setCards(data);
@@ -55,7 +58,8 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    }
+  }, [isLoggedIn]);
 
   React.useEffect(() => {
     checkToken();
@@ -210,10 +214,15 @@ function App() {
   }
 
   function handleSignOut() {
-    setLoggedIn(false);
-    setEmail("");
-    setIsMobileMenuOpen(false);
-    navigate("/sign-in", { replace: true });
+    auth
+      .logout()
+      .then(() => {
+        setLoggedIn(false);
+        setEmail("");
+        setIsMobileMenuOpen(false);
+        navigate("/sign-in", { replace: true });
+      })
+      .catch(console.error)
   }
 
   function handleMobileMenuClick() {
