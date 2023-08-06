@@ -17,13 +17,12 @@ const { pageNotFoundErrorMessage, limitErrorMessage } = require('./errors/messag
 const error = require('./middlewares/error');
 const { loginValidation, signUpValidation } = require('./middlewares/validation/userValidation')
 
-const { PORT = 3001, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 const app = express();
 
 app.use(cors({
   origin: [
     'http://localhost:3001',
-    'http://mesto.dvr.nomoreparties.co',
     'https://mesto.dvr.nomoreparties.co'
   ],
   credentials: true,
