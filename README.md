@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.111.211
+IP 158.160.111.211
 
 Frontend https://mesto.dvr.nomoreparties.co/
 
