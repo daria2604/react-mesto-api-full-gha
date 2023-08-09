@@ -49,12 +49,13 @@ app.get('/crash-test', () => {
 app.post('/signin', loginValidation, login);
 app.post('/signup', signUpValidation, createUser);
 app.use(auth)
+app.get('/logout', logout)
 app.use('/users', users);
 app.use('/cards', cards);
 app.patch('*', (req, res) => {
   throw new NotFoundError(pageNotFoundErrorMessage);
 });
-app.use('/logout', logout)
+
 
 mongoose.connect(DB_URL);
 
