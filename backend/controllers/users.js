@@ -9,11 +9,13 @@ const {
   userUpdateValidationErrorMessage,
   avatarUpdateValidationErrorMessage,
   conflictErrorMessage,
+  authorizationErrorMessage,
 } = require('../errors/messages');
 const {
   ConflictError,
   NotFoundError,
   BadRequestError,
+  UnauthorizedError,
 } = require('../errors/errorClasses');
 
 const options = {
@@ -23,7 +25,12 @@ const options = {
 
 const getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.status(OK).send(users))
+    .then((users) => {
+      if(!users) {
+        throw new UnauthorizedError(authorizationErrorMessage)
+      }
+      return res.status(OK).send(users)
+    })
     .catch(next);
 };
 
@@ -48,7 +55,7 @@ const getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (!user) {
-        throw new NotFoundError(userNotFoundErrorMessage);
+        throw new UnauthorizedError(authorizationErrorMessage);
       }
       res.status(OK).send({ user });
     })
