@@ -36,6 +36,7 @@ function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
+    const token = localStorage.getItem('userId')
     if(isLoggedIn) {
       api
       .getUserInfo()
@@ -43,12 +44,13 @@ function App() {
         setCurrentUser(data.user);
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err);
       });
     }
   }, [isLoggedIn]);
 
   React.useEffect(() => {
+    const token = localStorage.getItem('userId')
     if(isLoggedIn) {
       api
       .getInitialCards()
@@ -221,6 +223,7 @@ function App() {
         setEmail("");
         setIsMobileMenuOpen(false);
         navigate("/sign-in", { replace: true });
+        localStorage.removeItem('userId')
       })
       .catch(console.error)
   }

@@ -3,17 +3,17 @@ const { UnauthorizedError } = require('../errors/errorClasses');
 const { checkToken } = require('../utils/token');
 
 module.exports = (req, res, next) => {
-  if(!req.headers.cookie) {
+  if (!req.cookies) {
     throw new UnauthorizedError(authorizationErrorMessage);
   }
 
-  const token = req.headers.cookie.jwt;
-  let payload
+  const token = req.cookies.jwt;
+  let payload;
 
   try {
-    payload = checkToken(token)
-  } catch(err) {
-    return new UnauthorizedError(authorizationErrorMessage)
+    payload = checkToken(token);
+  } catch (err) {
+    throw new UnauthorizedError(authorizationErrorMessage);
   }
 
   req.user = payload;

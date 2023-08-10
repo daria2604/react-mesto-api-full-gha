@@ -26,12 +26,16 @@ export const authorize = (email, password) => {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     credentials: 'include',
     body: JSON.stringify({ email, password })
   })
   .then(checkResponse)
+  .then((data) => {
+    localStorage.setItem('userId', data._id)
+    return data
+  })
 }
 
 export const getContent = () => {
