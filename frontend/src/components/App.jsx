@@ -37,7 +37,7 @@ function App() {
 
   React.useEffect(() => {
     const token = localStorage.getItem('userId')
-    if(isLoggedIn) {
+    if(token) {
       api
       .getUserInfo()
       .then((data) => {
@@ -51,7 +51,7 @@ function App() {
 
   React.useEffect(() => {
     const token = localStorage.getItem('userId')
-    if(isLoggedIn) {
+    if(token) {
       api
       .getInitialCards()
       .then((data) => {
