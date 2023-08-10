@@ -24,8 +24,14 @@ const options = {
 };
 
 const getUsers = (req, res, next) => {
-  User.find({})
-    .then((users) => res.send(users))
+  User.findById(req.user._id)
+    .then((user) => {
+      if (!user) {
+        throw new UnauthorizedError(authorizationErrorMessage);
+      }
+      User.find({})
+      .then((users) => res.send(users))
+    })
     .catch(next);
 };
 
