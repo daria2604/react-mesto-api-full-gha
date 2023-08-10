@@ -25,12 +25,7 @@ const options = {
 
 const getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => {
-      if(!users) {
-        throw new UnauthorizedError(authorizationErrorMessage)
-      }
-      return res.status(OK).send(users)
-    })
+    .then((users) => res.send(users))
     .catch(next);
 };
 
