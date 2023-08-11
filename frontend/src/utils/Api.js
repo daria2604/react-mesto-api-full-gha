@@ -98,7 +98,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.mesto.dvr.nomoreparties.co',
+  // baseUrl: 'https://api.mesto.dvr.nomoreparties.co',
+  baseUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
   }

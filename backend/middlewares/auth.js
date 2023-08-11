@@ -1,10 +1,11 @@
 const { authorizationErrorMessage } = require('../errors/messages');
-const { UnauthorizedError } = require('../errors/errorClasses');
+const UnauthorizedError = require('../errors/UnauthorizedError');
 const { checkToken } = require('../utils/token');
 
 module.exports = (req, res, next) => {
   if (!req.cookies) {
-    throw new UnauthorizedError(authorizationErrorMessage);
+    next(new UnauthorizedError(authorizationErrorMessage));
+    return;
   }
 
   const token = req.cookies.jwt;
@@ -13,7 +14,7 @@ module.exports = (req, res, next) => {
   try {
     payload = checkToken(token);
   } catch (err) {
-    throw new UnauthorizedError(authorizationErrorMessage);
+    next(new UnauthorizedError(authorizationErrorMessage));
   }
 
   req.user = payload;

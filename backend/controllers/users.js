@@ -11,12 +11,10 @@ const {
   conflictErrorMessage,
   authorizationErrorMessage,
 } = require('../errors/messages');
-const {
-  ConflictError,
-  NotFoundError,
-  BadRequestError,
-  UnauthorizedError,
-} = require('../errors/errorClasses');
+const BadRequestError = require('../errors/BadRequestError');
+const ConflictError = require('../errors/ConflictError');
+const NotFoundError = require('../errors/NotFoundError');
+const UnauthorizedError = require('../errors/UnauthorizedError');
 
 const options = {
   new: true, // обработчик then получит на вход обновлённую запись
@@ -24,14 +22,8 @@ const options = {
 };
 
 const getUsers = (req, res, next) => {
-  User.findById(req.user._id)
-    .then((user) => {
-      if (!user) {
-        throw new UnauthorizedError(authorizationErrorMessage);
-      }
-      User.find({})
-      .then((users) => res.send(users))
-    })
+  User.find({})
+    .then((users) => res.status(OK).send(users))
     .catch(next);
 };
 
@@ -71,7 +63,9 @@ const getCurrentUser = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
-  const { email, password, name, about, avatar } = req.body;
+  const {
+    email, password, name, about, avatar,
+  } = req.body;
 
   bcrypt.hash(password, 10).then((hash) => {
     User.create({

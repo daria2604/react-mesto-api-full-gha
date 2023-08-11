@@ -1,12 +1,10 @@
 const { celebrate, Joi } = require('celebrate');
 const { default: mongoose } = require('mongoose');
-const regex= require('../../utils/regex');
+const regex = require('../../utils/regex');
 
-const userIdValidation = (value, helper) =>
-  mongoose.isValidObjectId(value)
-    ? value
-    : helper.message('Передан некорректный id пользователя.');
-
+const userIdValidation = (value, helper) => (mongoose.isValidObjectId(value)
+  ? value
+  : helper.message('Передан некорректный id пользователя.'));
 
 const loginValidation = celebrate({
   body: Joi.object().keys({
@@ -29,7 +27,7 @@ const getUserByIdValidation = celebrate({
   params: Joi.object().keys({
     userId: Joi.string().custom(userIdValidation),
   }),
-})
+});
 
 const updateProfileValidation = celebrate({
   body: Joi.object().keys({

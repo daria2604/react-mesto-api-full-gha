@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://api.mesto.dvr.nomoreparties.co'
+// export const BASE_URL = 'https://api.mesto.dvr.nomoreparties.co'
+export const BASE_URL = 'http://localhost:3000'
 
 export const checkResponse = (res) => {
   if(res.ok) {
