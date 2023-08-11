@@ -56,7 +56,7 @@ app.use(auth);
 app.get('/logout', logout);
 app.use('/users', users);
 app.use('/cards', cards);
-app.patch('*', (req, res, next) => {
+app.use((req, res, next) => {
   next(new NotFoundError(pageNotFoundErrorMessage));
 });
 

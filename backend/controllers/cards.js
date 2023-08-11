@@ -45,20 +45,11 @@ const deleteCard = (req, res, next) => {
       if (card.owner.toString() !== req.user._id) {
         throw new ForbiddenError(forbiddenErrorMessage);
       }
-      Card.deleteOne({ _id: req.params.cardId })
-        .then((myCard) => {
-          if (!myCard) {
-            throw new NotFoundError(cardNotFoundErrorMessage);
-          }
-          res.status(OK).send(myCard);
-        })
-        .catch((err) => {
-          if (err.name === 'CastError') {
-            next(new BadRequestError(cardBadRequestErrorMessage));
-          } else {
-            next(err);
-          }
-        });
+
+      return Card.deleteOne({ _id: req.params.cardId });
+    })
+    .then((myCard) => {
+      res.status(OK).send(myCard);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
