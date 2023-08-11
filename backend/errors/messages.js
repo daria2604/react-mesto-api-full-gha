@@ -16,4 +16,4 @@ module.exports = {
   forbiddenErrorMessage: 'Вы можете удалять только свои карточки.',
   limitErrorMessage: 'Превышен лимит запросов с этого IP',
   serverErrorMessage: 'Произошла ошибка в работе сервера.',
-}
+};

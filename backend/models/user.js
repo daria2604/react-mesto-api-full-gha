@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
-const { UnauthorizedError } = require('../errors/BadRequestError.js');
+const UnauthorizedError = require('../errors/UnauthorizedError');
 const { authenticationErrorMessage } = require('../errors/messages');
 const regex = require('../utils/regex');
 
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema(
       select: false,
     },
   },
-  { versionKey: false }
+  { versionKey: false },
 );
 
 userSchema.statics.findUserByCredentials = function (email, password) {
